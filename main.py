@@ -100,7 +100,7 @@ flags.DEFINE_integer('restore_iter', 0, 'iteration to load model (-1 for latest 
 flags.DEFINE_integer('train_update_batch_size', -1, 'number of examples used for gradient update during training \
                     (use if you want to test with a different number).')
 flags.DEFINE_integer('test_update_batch_size', 1, 'number of demos used during test time')
-flags.DEFINE_float('gpu_memory_fraction', 1.0, 'fraction of memory used in gpu')
+flags.DEFINE_float('gpu_memory_fraction', 0.9, 'fraction of memory used in gpu')
 flags.DEFINE_bool('record_gifs', True, 'record gifs during evaluation')
 
 def train(graph, model, saver, sess, data_generator, log_dir, restore_itr=0):
@@ -209,7 +209,7 @@ def main():
             ob = env.reset()
             # import pdb; pdb.set_trace()
     graph = tf.Graph()
-    gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=FLAGS.gpu_memory_fraction)
+    gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=FLAGS.gpu_memory_fraction, visible_device_list="3")
     tf_config = tf.ConfigProto(gpu_options=gpu_options)
     sess = tf.Session(graph=graph, config=tf_config)
     network_config = {

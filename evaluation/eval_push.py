@@ -14,7 +14,7 @@ import sys
 XML_PATH = 'sim_push_xmls/'
 SCALE_FILE_PATH = 'data/scale_and_bias_sim_push.pkl'
 CROP = False
-from gym.envs.mujoco.pusher import PusherEnv
+# from gym.envs.mujoco.pusher import PusherEnv
 
 class TFAgent(object):
     def __init__(self, model, scale_bias_file, sess):
