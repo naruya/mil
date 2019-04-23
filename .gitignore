@@ -4,6 +4,7 @@
 
 # model specific
 data/*
-logs/*
+logs*/*
+*.log
 mil_data.zip*
 MUJOCO_LOG.TXT
